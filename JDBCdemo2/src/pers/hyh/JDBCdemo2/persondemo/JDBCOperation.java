@@ -1,5 +1,6 @@
 package pers.hyh.JDBCdemo2.persondemo;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.mysql.jdbc.Connection;
@@ -31,6 +32,44 @@ public class JDBCOperation {
 		PreparedStatement psmt;
 		try {
 			psmt=(PreparedStatement)conn.prepareStatement(sql);
+			i=psmt.executeUpdate();
+			psmt.close();
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return i;
+	}
+	public static Integer getAll() {
+		Connection conn=JDBCUtil.getConn();
+		String sql="select * from test";
+		PreparedStatement psmt;
+		try {
+			psmt=(PreparedStatement)conn.clientPrepareStatement(sql);
+			ResultSet rs=psmt.executeQuery();
+			int col=rs.getMetaData().getColumnCount();
+			System.out.println("---------------------------------------------");
+			while(rs.next()) {
+				for(int i=1;i<=col;i++) {
+					System.out.print(rs.getString(i)+"    ");
+				}
+				System.out.println();
+			}
+			System.out.println("---------------------------------------------");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public static int delete(int id) {
+		Connection conn=JDBCUtil.getConn();
+		int i=0;
+		String sql="delete from test where Id='"+id+"'";
+		PreparedStatement psmt;
+		try {
+			psmt=(PreparedStatement)conn.clientPrepareStatement(sql);
 			i=psmt.executeUpdate();
 			psmt.close();
 			conn.close();
