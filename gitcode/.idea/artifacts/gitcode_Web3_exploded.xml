@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="gitcode:Web3 exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/gitcode_Web3_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="gitcode/web/Web3" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="gitcode" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
