@@ -1,9 +1,9 @@
 package com.smart.domain;
 
+//登陆日志领域对象
+
 import java.io.Serializable;
 import java.util.Date;
-
-//登陆日志领域对象
 
 public class LoginLog implements Serializable {
     private int loginLogId;

@@ -1,10 +1,10 @@
 package com.smart.domain;
 
-import java.io.Serializable;
-import java.util.Date;
-
 //用户领域对象
 //领域对象一般要实现Serializable接口，以便可以序列化
+
+import java.io.Serializable;
+import java.util.Date;
 
 public class User implements Serializable {
     private int userId;
