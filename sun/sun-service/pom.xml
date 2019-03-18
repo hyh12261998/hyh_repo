@@ -7,6 +7,7 @@
   </parent>
   <artifactId>sun-service</artifactId>
   <dependencies>
+  
     <!-- https://mvnrepository.com/artifact/junit/junit -->
     <dependency>
       <groupId>junit</groupId>
@@ -14,12 +15,14 @@
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
+    
     <!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
     <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-test</artifactId>
         <version>5.1.5.RELEASE</version>
         <scope>test</scope>
+        
     </dependency>   
     <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
       <dependency>
@@ -27,5 +30,28 @@
       <artifactId>spring-webmvc</artifactId>
       <version>5.1.5.RELEASE</version>
     </dependency>
+    
+    <!-- log4j -->
+    <dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>2.11.0</version>
+	</dependency>
+	<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.11.0</version>
+	</dependency>
+	<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.5</version>
+	</dependency>
+	<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.5</version>
+	</dependency>
+	
   </dependencies>
 </project>
