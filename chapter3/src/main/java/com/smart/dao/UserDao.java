@@ -22,6 +22,7 @@ public class UserDao {
 
     private JdbcTemplate jdbcTemplate;
 
+    //自动注入JdbcTemplate的Bean，Autowired（自动装配）
     @Autowired
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate){
         this.jdbcTemplate=jdbcTemplate;
