@@ -2,13 +2,39 @@ package com.osals.base.domain;
 
 import java.io.Serializable;
 
-@SuppressWarnings("serial")
-public abstract class BaseDomain implements Serializable {
+/**
+ * Base abstract class for Model objects. Child objects should implement
+ * toString(), equals() and hashCode().
+ *
+ * @author <a href="mailto:ming616@gmail.com">Liu Xiaoming</a>
+ */
+@SuppressWarnings("serial")//取消一些编译器产生的警告（“serial”忽略serializable类中没有声明的serialVersionUID变量）
+public abstract class BaseDomain implements Serializable {//可序列化
 
+	/**
+	 * Compares object equality. When using Hibernate, the primary key should not be
+	 * a part of this comparison.
+	 *
+	 * @param o
+	 *            object to compare to
+	 * @return true/false based on equality tests
+	 */
 	public abstract boolean equals(Object o);
 
+	/**
+	 * When you override equals, you should override hashCode. See "Why are equals()
+	 * and hashCode() importation" for more information:
+	 * http://www.hibernate.org/109.html
+	 *
+	 * @return hashCode
+	 */
 	public abstract int hashCode();
 
+	/**
+	 * Returns a multi-line String with key=value pairs.
+	 *
+	 * @return a String representation of this class.
+	 */
 	public abstract String toString();
 }
 

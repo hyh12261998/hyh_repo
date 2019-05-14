@@ -23,14 +23,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Access(value=AccessType.FIELD)
 public class BaseTreeEntity<T extends BaseTreeEntity<T>> extends BaseEntity {
 
-	/**
-	 *
-	 */
 	private static final long serialVersionUID = -5961264427451119166L;
-
-	@JsonManagedReference("parent-children")
-	@OneToMany(mappedBy = "parent", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
-	List<T> children;
 
 	@Transient
 	boolean leaf = true;
@@ -38,7 +31,11 @@ public class BaseTreeEntity<T extends BaseTreeEntity<T>> extends BaseEntity {
 	@JsonBackReference("parent-children")
 	@ManyToOne
 	@JoinColumn(name = "PARENT_ID")
-	T parent;
+	 T parent;
+	
+	@JsonManagedReference("parent-children")
+	@OneToMany(mappedBy = "parent", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+	List<T> children;
 
 	@Column(name = "TEXT")
 	String text;

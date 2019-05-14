@@ -22,8 +22,7 @@ public class GenericDaoTestCase<PK extends Serializable, T extends BaseEntity, D
 	protected List<T> list;
 	
 	@Before
-	public void setUp() throws Exception {
-		
+	public void setUp() throws Exception {	
 	}
 }
 

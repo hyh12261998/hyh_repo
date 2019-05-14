@@ -40,8 +40,7 @@ public class GenericManagerImpl<T extends BaseEntity, PK extends Serializable> i
 	}
 
 	public List<T> save(Iterable<T> entities) {
-		//return this.dao.saveAll(entities);
-		return null;
+		return this.dao.saveAll(entities);
 	}
 
 	public T save(T entity) {

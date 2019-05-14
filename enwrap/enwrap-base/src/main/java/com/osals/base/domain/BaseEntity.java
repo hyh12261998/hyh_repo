@@ -24,35 +24,45 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Access(value=AccessType.FIELD)
 public class BaseEntity extends BaseDomain {
 
-	/**
-	 *
-	 */
 	private static final long serialVersionUID = -6163675075289529459L;
+	
+	/**
+	 *实体创建时间
+	 */
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "DATECREATED")
 	protected Date dateCreated = new Date();
 
 	/**
-	 * ʵ���޸�ʱ��
+	 *实体修改时间
 	 */
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "DATEMODIFIED")
 	protected Date dateModified = new Date();
 
 	/**
-	 * ʵ���Ƿ�ɾ��
+	 * 实体是否被删除
 	 */
 	@Column(name = "DELETED")
 	protected Boolean deleted;
 
+	/**
+	 * 实体名
+	 */
 	@Column(name = "ENTITY_NAME")
 	protected String entityName;
 
+	/**
+	 * 主键id
+	 */
 	@Id
 	@Column(name = "ID")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)//主键由数据库自动生成
 	protected Long id;
 
+	/**
+	 * 版本号
+	 */
 	@Version
 	@Access(AccessType.FIELD)
 	private long version;
@@ -70,34 +80,6 @@ public class BaseEntity extends BaseDomain {
 		return false;
 	}
 
-	
-	public Date getDateCreated() {
-		return dateCreated;
-	}
-
-
-
-
-	public Date getDateModified() {
-		return dateModified;
-	}
-
-
-	public Boolean getDeleted() {
-		return deleted;
-	}
-
-
-	public String getEntityName() {
-		return entityName;
-	}
-
-
-	public Long getId() {
-		return id;
-	}
-
-
 	@Override
 	public int hashCode() {
 		if (this.id == null) {
@@ -106,34 +88,49 @@ public class BaseEntity extends BaseDomain {
 		return HashCodeBuilder.reflectionHashCode(this.id);
 	}
 
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
+	}
 
 	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
 	}
 
-
 	public void setDateModified(Date dateModified) {
 		this.dateModified = dateModified;
 	}
-
 
 	public void setDeleted(Boolean deleted) {
 		this.deleted = deleted;
 	}
 
-
 	public void setEntityName(String entityName) {
 		this.entityName = entityName;
 	}
 
-
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
+	public Date getDateCreated() {
+		return dateCreated;
+	}
 
-	@Override
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
+	public Date getDateModified() {
+		return dateModified;
+	}
+
+	public Boolean getDeleted() {
+		return deleted;
+	}
+
+	public String getEntityName() {
+		return entityName;
+	}
+
+	public Long getId() {
+		return id;
 	}
 
 }

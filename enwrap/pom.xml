@@ -8,6 +8,7 @@
   	<module>enwrap-base</module>
   	<module>enwrap-dao</module>
   	<module>enwrap-service</module>
+  	<module>enwrap-web</module>
   </modules>
   
   <properties>

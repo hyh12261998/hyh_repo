@@ -5,11 +5,24 @@ import java.util.List;
 
 import com.osals.base.domain.BaseTreeEntity;
 
+/**
+ * Generic Manager that talks to GenericDao to CRUD POJOs.
+ * <p>
+ * <p>
+ * Extend this interface if you want typesafe (no casting necessary) managers
+ * for your domain objects.
+ *
+ * @param <T>
+ *            a type variable
+ * @param <PK>
+ *            the primary key for that type
+ * @author <a href="mailto:ming616@gmail.com">Liu Xiaoming</a>
+ */
 @SuppressWarnings("rawtypes")
 public interface GenericTreeManager<T extends BaseTreeEntity, PK extends Serializable> extends GenericManager<T, PK> {
 
 	/**
-	 * »ñÈ¡ÖÆ¶¨idµÄÈ«²¿×æÏÈÊµÌå¼¯ºÏ£»
+	 * è·å–åˆ¶å®šidçš„å…¨éƒ¨ç¥–å…ˆå®ä½“é›†åˆï¼›
 	 *
 	 * @param id
 	 * @return
@@ -17,7 +30,7 @@ public interface GenericTreeManager<T extends BaseTreeEntity, PK extends Seriali
 	public List<T> getAncestors(PK id);
 
 	/**
-	 * »ñÈ¡ÖÆ¶¨idµÄÖ±½Óº¢×ÓÊµÌå¼¯ºÏ£»
+	 * è·å–åˆ¶å®šidçš„ç›´æ¥å­©å­å®ä½“é›†åˆï¼›
 	 *
 	 * @param id
 	 * @return
@@ -25,7 +38,7 @@ public interface GenericTreeManager<T extends BaseTreeEntity, PK extends Seriali
 	public List<T> getChildren(PK id);
 
 	/**
-	 * »ñÈ¡ÖÆ¶¨idµÄÈ«²¿×ÓËïÊµÌå¼¯ºÏ£»
+	 * è·å–åˆ¶å®šidçš„å…¨éƒ¨å­å­™å®ä½“é›†åˆï¼›
 	 *
 	 * @param id
 	 * @return
@@ -33,11 +46,10 @@ public interface GenericTreeManager<T extends BaseTreeEntity, PK extends Seriali
 	public List<T> getDescendants(PK id);
 
 	/**
-	 * »ñÈ¡¸ù½ÚµãÊµÌå¼¯ºÏ
+	 * è·å–æ ¹èŠ‚ç‚¹å®ä½“é›†åˆ
 	 *
 	 * @return
 	 */
 	public List<T> getRoot();
 
 }
-

@@ -6,9 +6,11 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.Id;
-import javax.persistence.NamedQuery;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+//import javax.persistence.NamedQueries;
+//import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -19,10 +21,12 @@ import com.osals.base.domain.BaseTreeEntity;
  * @Description:客户类
  * @date:2019年5月7日 下午8:46:06
  */
-@Table(name="T_ADMIN_CUSTOMER")
 @Entity
-//@NamedQuery(name = "", query = "")
+@Table(name="T_ADMIN_CUSTOMER")
+//@NamedQueries({@NamedQuery(name="Customer.getRoot",query="select c from Customer c where c.parent is null")})
 public class Customer extends BaseTreeEntity<Customer>{
+	
+	private static final long serialVersionUID = 1L;
 
 	public String getC_name() {
 		return c_name;
@@ -47,14 +51,12 @@ public class Customer extends BaseTreeEntity<Customer>{
 	public void setEnwraps(Set<Enwrap> enwraps) {
 		this.enwraps = enwraps;
 	}
-
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = 1L;
 	
-	//@Id
-	//@GeneratedValue
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="C_ID")
+	protected Long id;
+	
 	@Column(name="C_NAME")
 	private String c_name;
 	

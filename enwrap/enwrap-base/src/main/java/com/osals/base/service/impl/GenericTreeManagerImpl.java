@@ -10,18 +10,31 @@ import com.osals.base.dao.GenericTreeDao;
 import com.osals.base.domain.BaseTreeEntity;
 import com.osals.base.service.GenericTreeManager;
 
+/**
+ * This class serves as the Base class for all other Managers - namely to hold
+ * common CRUD methods that they might all use. You should only need to extend
+ * this class when your require custom CRUD logic.
+ * <p/>
+ * <p>
+ * To register this class in your Spring context file, use the following XML.
+ *
+ * @param <T>
+ *            a type variable
+ * @param <PK>
+ *            the primary key for that type
+ */
 @Transactional
 public class GenericTreeManagerImpl<T extends BaseTreeEntity<T>, PK extends Serializable>
 		extends GenericManagerImpl<T, PK> implements GenericTreeManager<T, PK> {
 
 	protected GenericTreeDao<T, PK> treeDao;
 
-	//@Ovsserride
+	@Override
 	public List<T> getAncestors(PK id) {
 		List<T> ancestors = new ArrayList<T>();
 		T entity = this.treeDao.getOne(id);
 		T parent = entity.getParent();
-		while (parent != null) { // ×·Êö×æÏÈ
+		while (parent != null) { // ×·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			ancestors.add(parent);
 			entity = parent;
 			parent = entity.getParent();
@@ -29,17 +42,17 @@ public class GenericTreeManagerImpl<T extends BaseTreeEntity<T>, PK extends Seri
 		return ancestors;
 	}
 
-	//@Override
+	@Override
 	public List<T> getChildren(PK id) {
 		T entity = this.treeDao.getOne(id);
 		return entity.getChildren();
 	}
 
-	//@Override
+	@Override
 	public List<T> getDescendants(PK id) {
 		List<T> descendants = new ArrayList<T>();
 		List<T> children = this.getChildren(id);
-		if (children != null && children.size() > 0) { // ×·¼Ó×ÓËï
+		if (children != null && children.size() > 0) { // ×·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			descendants.addAll(children);
 			for (T t : children) {
 				@SuppressWarnings("unchecked")
@@ -58,7 +71,7 @@ public class GenericTreeManagerImpl<T extends BaseTreeEntity<T>, PK extends Seri
 		return descendants;
 	}
 
-	//@Override
+	@Override
 	public List<T> getRoot() {
 		return this.treeDao.getRoot();
 	}

@@ -11,4 +11,5 @@ import com.osals.base.domain.BaseTreeEntity;
 public abstract interface GenericTreeDao<T extends BaseTreeEntity<T>, PK extends Serializable>
 		extends GenericDao<T, PK> {
 	List<T> getRoot();
+	List<T> getEntity();
 }

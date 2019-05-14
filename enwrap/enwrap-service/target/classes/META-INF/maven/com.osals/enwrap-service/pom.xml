@@ -6,4 +6,13 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>enwrap-service</artifactId>
+  
+  <dependencies>
+      <dependency>
+          <groupId>com.osals</groupId>
+		  <artifactId>enwrap-dao</artifactId>
+		  <version>0.0.1-SNAPSHOT</version>
+      </dependency>
+  </dependencies>
+  
 </project>

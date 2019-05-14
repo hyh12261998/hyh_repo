@@ -4,7 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import com.osals.base.domain.BaseEntity;
@@ -14,14 +13,10 @@ import com.osals.base.domain.BaseEntity;
  * @Description:卖家类
  * @date:2019年5月7日 下午8:46:35
  */
-@Table(name="T_ADMIN_SELLER")
 @Entity
-//@NamedQuery(name="findAllSeller",query="SELECT S_NAME,S_TELEPHONE FROM T_ADMIN_SELLER")
+@Table(name="T_ADMIN_SELLER")
 public class Seller extends BaseEntity{
-	
-	/**
-	 *
-	 */
+
 	private static final long serialVersionUID = 1L;
 
 	public String getS_name() {
@@ -39,9 +34,12 @@ public class Seller extends BaseEntity{
 	public void setS_telephone(String s_telephone) {
 		this.s_telephone = s_telephone;
 	}
+	
+	@Id
+	@GeneratedValue
+	@Column(name="S_ID")
+	protected Long id;
 
-	//@Id
-	//@GeneratedValue
 	@Column(name="S_NAME")
 	private String s_name;
 	
